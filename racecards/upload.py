@@ -18,10 +18,10 @@ def upload_df_to_supabase(df, table_name):
     data = df.to_dict(orient='records')
     
     # Insert data into the specified table
-    response = supabase.table(table_name).insert(data).execute()
-    
-    if response.error:
-        raise Exception(f"Error uploading data to {table_name}: {response.error.message}")
+    try:
+        supabase.table(table_name).insert(data).execute()
+    except Exception as e:
+        raise Exception(f"Error uploading data to {table_name}: {e}")
     
     print(f"Successfully uploaded {len(data)} records to {table_name}.")
 
