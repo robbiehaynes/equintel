@@ -26,4 +26,7 @@ def upload_df_to_supabase(df, table_name):
     print(f"Successfully uploaded {len(data)} records to {table_name}.")
 
 df = pd.read_pickle("output/racecards.pkl")
+
+df.fillna(0, inplace=True)
+
 upload_df_to_supabase(df, "racecards")
