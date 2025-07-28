@@ -29,10 +29,18 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Fetch racecards
-        run: python racecards/fetch.py
+        run: |
+          echo "Fetching data from : $API_URL"
+          python racecards/fetch.py
+        env:
+          API_URL: ${{ vars.API_URL }}
+          API_USER: ${{ vars.API_USER }}
+          API_PASS: ${{ secrets.API_PASS }}
 
       - name: Format racecards
-        run: python racecards/format.py
+        run: |
+          echo "Formatting racecards..."
+          python racecards/format.py
 
       - name: Upload processed racecards as artifact
         uses: actions/upload-artifact@v4
@@ -67,5 +75,10 @@ jobs:
           path: output/
 
       - name: Upload racecards
-        run: python racecards/upload.py
+        run: |
+          echo "Uploading to : $SUPABASE_URL
+          python racecards/upload.py
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
 
