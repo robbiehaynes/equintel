@@ -8,15 +8,14 @@ if not os.getenv("ENV") == "production":
   load_dotenv()
 
 # Set up the authentication
-auth = (os.getenv("USERNAME"), os.getenv("PASSWORD"))
+auth = (os.getenv("API_USER"), os.getenv("API_PASS"))
 
 # Make the request
-response = requests.get(os.getenv("API_RES_URL"), auth=auth)
+url = str.join([os.getenv("API_URL"), "/results/today"])
+response = requests.get(url, auth=auth)
 
 # Raise an exception if the request was unsuccessful
 response.raise_for_status()
 
 with open("output/results.json", "w") as f:
     json.dump(response.json(), f, indent=2)
-
-# Save data to Supabase
