@@ -11,7 +11,7 @@ if not os.getenv("ENV") == "production":
 auth = (os.getenv("API_USER"), os.getenv("API_PASS"))
 
 # Make the request
-url = str.join([os.getenv("API_URL"), "/results/today"])
+url = os.getenv("API_URL") + "/results/today"
 response = requests.get(url, auth=auth)
 
 # Raise an exception if the request was unsuccessful
