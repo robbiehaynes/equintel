@@ -76,7 +76,7 @@ jobs:
 
       - name: Upload racecards
         run: |
-          echo "Uploading to : $SUPABASE_URL
+          echo "Uploading to : $SUPABASE_URL"
           python racecards/upload.py
         env:
           SUPABASE_URL: ${{ vars.SUPABASE_URL }}
