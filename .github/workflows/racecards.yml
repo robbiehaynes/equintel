@@ -40,7 +40,6 @@ jobs:
       - name: Format racecards
         run: |
           echo "Formatting racecards..."
-          mkdir output
           python racecards/format.py
 
       - name: Upload processed racecards as artifact

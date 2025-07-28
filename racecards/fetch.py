@@ -17,5 +17,5 @@ response = requests.get(url, auth=auth, params={"day":"today"})
 # Raise an exception if the request was unsuccessful
 response.raise_for_status()
 
-with open("output/racecards.json", "w") as f:
+with open("output/racecards.json", "w+") as f:
     json.dump(response.json(), f, indent=2)
