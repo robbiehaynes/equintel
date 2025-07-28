@@ -2,10 +2,8 @@ import pandas as pd
 import os
 from supabase import create_client, Client
 
-# url: str = os.getenv("SUPABASE_URL")
-# key: str = os.getenv("SUPABASE_KEY")
-url: str = "https://mjmlrorvlvnjusawrvif.supabase.co"
-key: str = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1qbWxyb3J2bHZuanVzYXdydmlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3MDE4NzIsImV4cCI6MjA2OTI3Nzg3Mn0.KGkY0tgXIvIdM-gXsRNPJU_x2nphMuPzEJH9d0EmKEQ"
+url: str = os.getenv("SUPABASE_URL")
+key: str = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
 def upload_df_to_supabase(df, table_name):
